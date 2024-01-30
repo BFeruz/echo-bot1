@@ -10,8 +10,8 @@ chat_id = '5534265722'
 @app.route('/', methods=['POST'])
 def user():
     data = request.get_json() 
-    print(data)
-    bot.send_message(chat_id=chat_id, text='Hello!!')
+    chat_id = data['message']['chat']['id']
+    bot.send_message(chat_id=chat_id, text=data['message']['text'])
     return 'join'
 if __name__=="__main__":
     app.run(debug=True)
